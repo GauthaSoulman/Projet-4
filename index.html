@@ -58,12 +58,14 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form name="reserve" action="index.html" method="get" onsubmit="return validate();" >
+            <form id="form" name="reserve" action="index.html" method="get" onsubmit="event.preventDefault(); valid();">
+              
               <div class="formData">
                 <label>Prénom</label><br>
                 <input class="text-control" type="text" id="first" name="first" minlength="2"/><br>
               </div>
               <div id="firstTest"></div>
+              
               <div class="formData">
                 <label>Nom</label>
                 <br>
@@ -71,11 +73,13 @@
                 <br>
               </div>
               <div id="lastTest"></div>
+              
               <div class="formData">
                 <label>E-mail</label><br>
                 <input class="text-control" type="email" id="email" name="email"/><br>
               </div>
               <div id="emailTest"></div>
+              
               <div class="formData">
                 <label>Date de naissance</label><br>
                 <input class="text-control" type="date" id="birthdate" name="birthdate"/><br>
@@ -139,6 +143,12 @@
               
               <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
             </form>
+             <!-- Validation du formulaire -->
+            <div class="validationForm">
+                <p id="validMessage"></p>
+                <input id="btnValid" class="button btn-submit" type="button"  value="Fermer"/>
+              
+             </div>
           </div>
         </div>
       </div>

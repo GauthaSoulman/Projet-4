@@ -12,6 +12,8 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close");
+const form = document.getElementById("form");
+const validForm = document.querySelector(".validationForm");
 
 //Recupéré les champs des formulaires
 const first = document.getElementById("first");
@@ -21,6 +23,9 @@ const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const locationTournament = document.getElementsByName("location");    
 const condition = document.getElementById("checkbox1");
+const validMessage = document.getElementById("validMessage");
+const btnSubmit = document.getElementById("btnSubmit");
+const btnValid = document.getElementById("btnValid");
 
 
 //Const pour la verification
@@ -216,4 +221,34 @@ const validCondition = function() {
 };
 condition.addEventListener('change', function() {
   validCondition(this); 
+});
+
+//----- BTN VALIDATION -----
+function inscriptionFini() {
+  form.style.display = "none";
+  validForm.style.display = "flex";
+  validMessage.innerHTML = "Merci pour votre inscription";
+};
+
+function valid() {
+  // Condition qui vérifie si tous les autres conditions retourne true
+  if (validate(first, regExName, "Erreur prenom", firstTest, first)
+  && validate(last, regExName, "Erreur Nom", lastTest, last)
+  && validate(email, regExEmail, "Erreur Email", emailTest, email)
+  && validDate(birthdate) 
+  && validQuantity(quantity) 
+  && validLocationTournament()
+  && validCondition(condition)) {
+
+    inscriptionFini();
+
+  }else {
+    alert("Merci de remplir correctement votre inscription");
+  }
+}
+
+//----- BTN SUBMIT -----
+
+btnValid.addEventListener("click", function() { 
+  window.location.reload();
 });
