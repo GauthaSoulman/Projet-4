@@ -498,7 +498,17 @@ footer {
   border: 2px solid #279e7a;
  }
 
- 
+  
+/*Validation du formulaire*/
+.validationForm {
+  display: none;
+  text-align: center;
+  flex-direction: column;
+  height: 65vh;
+}
+.validationForm #validMessage{
+  margin: auto;
+}
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
